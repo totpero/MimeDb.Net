@@ -3,6 +3,34 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyVersion>1.54.0</AssemblyVersion>
+	  <FileVersion>1.54.0</FileVersion>
   </PropertyGroup>
+
+	<PropertyGroup>
+		<Version>1.54.0</Version>
+		<Authors>totpero</Authors>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<Copyright>Copyright © www.totpe.ro</Copyright>
+		<Description>mime</Description>
+		<PackageTags>mimetype</PackageTags>
+		<PackageProjectUrl>https://github.com/totpero/MimeDb.Net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/totpero/MimeDb.Net</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<DebugType>portable</DebugType>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\mime-db\db.json" Pack="True" PackagePath="">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\..\README.md" Pack="True" PackagePath="" />
+	</ItemGroup>
 
 </Project>

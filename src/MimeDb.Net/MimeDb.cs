@@ -16,7 +16,7 @@ public static class MimeDb
 
     private static Dictionary<string, MimeTypeDbItem> GetData()
     {
-        using var json = File.OpenRead(@"C:\Workspaces\GitHub\MimeDb.Net\mime-db\db.json");
+        using var json = File.OpenRead("db.json");
         return JsonSerializer.Deserialize<Dictionary<string, MimeTypeDbItem>>(json, JsonDeserializerOptions);
     }
 }

@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/MimeDb.Net/MimeDb.Net.csproj" Id="c75c1db7-a096-47af-a2fa-7cdbb341921e" />
   </Folder>
