@@ -5,15 +5,25 @@ public class MimeDbTests
     [Fact]
     public void LoadOk()
     {
-        var nr = MimeDb.MimeTypeItems.Count;
-        Assert.NotEqual(0, nr);
+        var nr = MimeDb.Items.Count;
+        Assert.Equal(2580, nr);
     } 
     
     [Fact]
     public void TestMimeItem()
     {
-        var mime = MimeDb.MimeTypeItems["application/vnd.syncml.dm+xml"];
+        var mime = MimeDb.Items["application/vnd.syncml.dm+xml"];
         Assert.True(mime.Compressible);
-        Assert.Equal("iana", mime.Source);
+        Assert.Equal(MimeTypeItemDbSource.Iana, mime.Source);
+    }
+
+    /// <summary>
+    /// should set audio/x-flac with extension=flac
+    /// </summary>
+    [Fact]
+    public void TestMimeTypeItemExtension()
+    {
+        var mime = MimeDb.Items["audio/x-flac"];
+        Assert.Equal("flac", mime.Extensions[0]);
     }
 }
