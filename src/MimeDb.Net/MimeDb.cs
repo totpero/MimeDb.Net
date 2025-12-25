@@ -14,7 +14,7 @@ public static class MimeDb
 
     public static IReadOnlyDictionary<string, MimeTypeDbItem> Items => Data.Value;
 
-    private static IReadOnlyDictionary<string, MimeTypeDbItem> GetData()
+    private static Dictionary<string, MimeTypeDbItem> GetData()
     {
         using var json = File.OpenRead(@"C:\Workspaces\GitHub\MimeDb.Net\mime-db\db.json");
         return JsonSerializer.Deserialize<Dictionary<string, MimeTypeDbItem>>(json, JsonDeserializerOptions);
