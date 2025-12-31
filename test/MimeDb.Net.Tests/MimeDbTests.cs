@@ -28,4 +28,22 @@ public class MimeDbTests
         var mime = MimeDb.Items["audio/x-flac"];
         Assert.Equal("flac", mime.Extensions[0]);
     }
+
+    [Fact]
+    public void TestTryGetExtensions()
+    {
+        var exists = MimeDb.TryGetExtensions("image/jpeg", out var extensions);
+        Assert.True(exists);
+        Assert.Single(extensions, "jpeg");
+    }
+
+    [Fact]
+    public void TestTryGetMimeType()
+    {
+        var exists = MimeDb.TryGetFileMimeType("filename.jpeg", out var mimetype);
+        Assert.True(exists);
+        Assert.Single(mimetype.Value.Extensions, "jpeg");
+        Assert.Equal("image/jpeg", mimetype.Key);
+    }
+
 }
