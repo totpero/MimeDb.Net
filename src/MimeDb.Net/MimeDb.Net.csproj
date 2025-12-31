@@ -11,8 +11,8 @@
 		<Authors>totpero</Authors>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<Copyright>Copyright © www.totpe.ro</Copyright>
-		<Description>mime</Description>
-		<PackageTags>mimetype</PackageTags>
+		<Description>This is a port of the popular JavaScript mime-db library to C#, the large database of mime types and information about them.</Description>
+		<PackageTags>mime mimetype mime-type parse</PackageTags>
 		<PackageProjectUrl>https://github.com/totpero/MimeDb.Net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/totpero/MimeDb.Net</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
