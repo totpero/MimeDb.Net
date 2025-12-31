@@ -14,6 +14,12 @@ It aggregates data from the following sources:
 - https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 - https://hg.nginx.org/nginx/raw-file/default/conf/mime.types
 
+## Install the package:
+
+```powershell
+dotnet add package MimeDb.Net
+```
+
 ## Usage
 
 ```csharp

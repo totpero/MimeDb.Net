@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MimeDb.Net.Items;
-using System.Text.Json;
 
 namespace MimeDb.Net
 {
     public static class MimeDb
     {
         private const string FileName = "db.json";
-        private static readonly Lazy<IReadOnlyDictionary<string, MimeTypeDbItem>> Data = new Lazy<IReadOnlyDictionary<string, MimeTypeDbItem>>(GetData);
+
+        private static readonly Lazy<IReadOnlyDictionary<string, MimeTypeDbItem>> Data = MimeTypeBase<MimeTypeDbItem>.GetLazyData(FileName);
 
         public static IReadOnlyDictionary<string, MimeTypeDbItem> Items => Data.Value;
 
-        private static Dictionary<string, MimeTypeDbItem> GetData()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static bool TryGetFileMimeType(string fileName, out KeyValuePair<string, MimeTypeDbItem> item)
         {
-            using (var json = File.OpenRead(FileName))
-                return JsonSerializer.Deserialize<Dictionary<string, MimeTypeDbItem>>(json, MimeDbOptions.JsonDeserializerOptions);
-        }
-
-        public static bool TryGetFileMimeType(string filename, out KeyValuePair<string, MimeTypeDbItem> item)
-        {
-            var ext = Path.GetExtension(filename);
+            var ext = Path.GetExtension(fileName);
             if (!string.IsNullOrEmpty(ext))
             {
                 ext =  ext.Substring(1);
@@ -40,6 +40,12 @@ namespace MimeDb.Net
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mimeType"></param>
+        /// <param name="ext"></param>
+        /// <returns></returns>
         public static bool TryGetFirstExtension(string mimeType, out string ext)
         {
             if (Items.TryGetValue(mimeType,out var item))
@@ -51,6 +57,12 @@ namespace MimeDb.Net
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mimeType"></param>
+        /// <param name="ext"></param>
+        /// <returns></returns>
         public static bool TryGetExtensions(string mimeType, out string[] ext)
         {
             if (Items.TryGetValue(mimeType,out var item))
