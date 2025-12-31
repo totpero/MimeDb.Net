@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <TargetFrameworks>netstandard2.0;net462;net8.0;net9.0;net10.0</TargetFrameworks>
 	  <AssemblyVersion>1.54.0</AssemblyVersion>
 	  <FileVersion>1.54.0</FileVersion>
   </PropertyGroup>
@@ -26,9 +25,25 @@
 
 	</PropertyGroup>
 
+	<ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
+		<PackageReference Include="System.Text.Json" Version="10.0.1" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<None Include="..\..\mime-db\db.json" Pack="True" PackagePath="">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\..\mime-db\src\apache-types.json" Pack="True" PackagePath="">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\..\mime-db\src\custom-types.json" Pack="True" PackagePath="">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\..\mime-db\src\iana-types.json" Pack="True" PackagePath="">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Include="..\..\mime-db\src\nginx-types.json" Pack="True" PackagePath="">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Include="..\..\README.md" Pack="True" PackagePath="" />
 		<None Include="..\..\LICENSE" Pack="True" PackagePath="" />

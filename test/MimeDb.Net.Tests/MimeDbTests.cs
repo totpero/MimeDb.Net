@@ -1,4 +1,6 @@
-﻿namespace MimeDb.Net.Tests;
+﻿using MimeDb.Net.Items;
+
+namespace MimeDb.Net.Tests;
 
 public class MimeDbTests
 {
@@ -14,7 +16,7 @@ public class MimeDbTests
     {
         var mime = MimeDb.Items["application/vnd.syncml.dm+xml"];
         Assert.True(mime.Compressible);
-        Assert.Equal(MimeTypeItemDbSource.Iana, mime.Source);
+        Assert.Equal(MimeTypeDbItemSource.Iana, mime.Source);
     }
 
     /// <summary>
